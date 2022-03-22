@@ -12,9 +12,6 @@ app.get('/:youtubeId/mp3', (req, res) => {
   ffmpeg(stream)
   .audioBitrate(128)
   .save(`./downloads/${youtubeId}.mp3`)
-  .on('progress', p => {
-    console.log(`${p.targetSize}kb downloaded`);
-  })
   .on('end', () => {
     res.send('done');
   })
